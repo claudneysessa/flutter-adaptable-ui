@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_api_rest/utils/responsive.dart';
-import 'input_text.dart';
+
+import '../../../../application/commons/utils/responsive.dart';
+import '../../../../application/commons/widgets/input_text.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -9,7 +10,8 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   GlobalKey<FormState> _formKey = GlobalKey();
-  String _email = '', _password = '';
+  String _email = '';
+  String _password = '';
 
   _submit() {
     final isOk = _formKey.currentState.validate();
@@ -33,14 +35,14 @@ class _LoginFormState extends State<LoginForm> {
             children: <Widget>[
               InputText(
                 keyboardType: TextInputType.emailAddress,
-                label: "EMAIL ADDRESS",
+                label: "Endereço de e-mail",
                 fontSize: responsive.dp(responsive.isTablet ? 1.2 : 1.4),
                 onChanged: (text) {
                   _email = text;
                 },
                 validator: (text) {
                   if (!text.contains("@")) {
-                    return "Invalid email";
+                    return "Enereço de e-mail inválido";
                   }
                   return null;
                 },
@@ -58,30 +60,28 @@ class _LoginFormState extends State<LoginForm> {
                   children: <Widget>[
                     Expanded(
                       child: InputText(
-                        label: "PASSWORD",
+                        label: "Senha",
                         obscureText: true,
                         borderEnabled: false,
-                        fontSize:
-                            responsive.dp(responsive.isTablet ? 1.2 : 1.4),
+                        fontSize: responsive.dp(responsive.isTablet ? 1.2 : 1.4),
                         onChanged: (text) {
                           _password = text;
                         },
                         validator: (text) {
                           if (text.trim().length == 0) {
-                            return "Invalid password";
+                            return "Senha inválida";
                           }
                           return null;
                         },
                       ),
                     ),
-                    FlatButton(
-                      padding: EdgeInsets.symmetric(vertical: 10),
+                    TextButton(
+                      // padding: EdgeInsets.symmetric(vertical: 10),
                       child: Text(
-                        "Forgot Password",
+                        "Esqueceu sua senha",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize:
-                              responsive.dp(responsive.isTablet ? 1.2 : 1.5),
+                          fontSize: responsive.dp(responsive.isTablet ? 1.2 : 1.5),
                         ),
                       ),
                       onPressed: () {},
@@ -92,8 +92,8 @@ class _LoginFormState extends State<LoginForm> {
               SizedBox(height: responsive.dp(5)),
               SizedBox(
                 width: double.infinity,
-                child: FlatButton(
-                  padding: EdgeInsets.symmetric(vertical: 15),
+                child: TextButton(
+                  // padding: EdgeInsets.symmetric(vertical: 15),
                   child: Text(
                     "Sign in",
                     style: TextStyle(
@@ -102,7 +102,7 @@ class _LoginFormState extends State<LoginForm> {
                     ),
                   ),
                   onPressed: this._submit,
-                  color: Colors.pinkAccent,
+                  // color: Colors.pinkAccent,
                 ),
               ),
               SizedBox(height: responsive.dp(2)),
@@ -110,20 +110,22 @@ class _LoginFormState extends State<LoginForm> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    "New to Friendly Desi?",
+                    "Não possui uma conta?",
                     style: TextStyle(
                       fontSize: responsive.dp(1.5),
                     ),
                   ),
-                  FlatButton(
+                  TextButton(
                     child: Text(
-                      "Sign up",
+                      "Registre-se",
                       style: TextStyle(
                         color: Colors.pinkAccent,
                         fontSize: responsive.dp(1.5),
                       ),
                     ),
                     onPressed: () {
+                      print(_email);
+                      print(_password);
                       Navigator.pushNamed(context, 'register');
                     },
                   )

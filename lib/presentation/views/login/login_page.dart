@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_api_rest/utils/responsive.dart';
-import 'package:flutter_api_rest/widgets/circle.dart';
-import 'package:flutter_api_rest/widgets/icon_container.dart';
-import 'package:flutter_api_rest/widgets/login_form.dart';
+
+import '../../../application/commons/utils/responsive.dart';
+import '../../../application/commons/widgets/circle.dart';
+import '../../../application/commons/widgets/icon_container.dart';
+import 'widgets/login_form.dart';
 
 class LoginPage extends StatefulWidget {
   static const routeName = 'login';
@@ -64,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                         height: responsive.dp(3),
                       ),
                       Text(
-                        "Hello Again\nWelcome Back!",
+                        "Olán\nBem vindo de volta!",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: responsive.dp(1.6),
